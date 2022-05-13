@@ -9,7 +9,7 @@ let errorMsg = '';
 let products = [];
 
 
-console.log(products);
+
 export default class Shelf extends Component {
 
 constructor(props) {
@@ -18,16 +18,22 @@ constructor(props) {
         products: [],
         errorMsg: ''
     };
+
 }
 
 componentDidMount(){
-    axios.get(`https://corebiz-test.herokuapp.com/api/v1/products`)
-    .then(res => {
-        this.setState({products: res.data});
-        
-    }).catch(function (error) {
-        this.setState({errorMsg: 'Nenhum resultado a exibir'});
-    });
+    console.log('this.state.products');    
+    if (this.state.products.length <= 0){
+        axios.get(`https://corebiz-test.herokuapp.com/api/v1/products`)
+        .then(res => {
+            this.setState({products: res.data});
+            
+        }).catch(function (error) {
+            this.setState({errorMsg: 'Nenhum resultado a exibir'});
+        }); 
+           
+    }
+
 }
 
 render() {
@@ -50,7 +56,7 @@ render() {
               <div className="shelf-wrapper">
               <Slider {...settings}>
                 { this.state.products.map(product => 
-                    <div>
+                    <div key={product.productName}>
                         <div className="shelf-product-wrapper">
                             <div className="shelf-product-img">
                                 <picture>

@@ -40,7 +40,7 @@ render() {
                 <Slider {...settings}>
                     {
                         feed.map(feed => 
-                            <div>
+                            <div key={'slide' + feed.index + '-' + feed.name}>
                             <div className="slideshow-slide-inner">
                                 <div className="slideshow-slider-inner-bg">
                                     <picture>
