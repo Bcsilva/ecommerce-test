@@ -19,10 +19,24 @@ export default function Shelf() {
                 <div className="newsletter-wrapper">
                     <h3>Participe de nossas news com promoções e novidades!</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-row">
-                            <input type="text" className="form-control" placeholder="" autoComplete="off" {...register("name", { required: true})} />
-                            <input type="email" className="form-control"placeholder="" autoComplete="off" {...register("email", { required: true, pattern: /^\S+@\S+$/i})} />
-                            <input type="submit" className="btn-submit is-primary" name="submit" id="submit" />
+                        <div className="field is-horizontal">
+                            <div className="field-body">
+                                <div className="field">
+                                    <div className="control is-expanded">
+                                        <input type="text" className="input" placeholder="" autoComplete="off" {...register("name", { required: true})} />
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <div className="control is-expanded">
+                                        <input type="email" className="input"placeholder="" autoComplete="off" {...register("email", { required: true, pattern: /^\S+@\S+$/i})} />
+                                    </div>                                    
+                                </div>
+                                <div className="field">
+                                    <div className="control is-expanded">
+                                        <input type="submit" className="button is-primary is-fullwidth" name="submit" id="submit" />
+                                    </div>   
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

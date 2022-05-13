@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import logo from '../assets/logo.svg';
 
 export default class Header extends Component {
@@ -22,7 +22,7 @@ render() {
                                     <i></i><span>Minha conta</span>
                                 </a>
                                 <a className="button is-light minicart" href="http://www.google.com/">
-                                    <i></i><span className="counter">{this.props.items}</span>
+                                    <i></i><span className="counter">{this.props.cart}</span>
                                 </a>                            
                             </div>
                         </div>

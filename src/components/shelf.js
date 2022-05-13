@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 let errorMsg = '';
-let products = [];
 
 
 
@@ -16,6 +15,7 @@ constructor(props) {
     super(props);
     this.state = {
         products: [],
+        cart: this.props.cart,
         errorMsg: ''
     };
 
@@ -34,6 +34,16 @@ componentDidMount(){
            
     }
 
+}
+
+addToCart = (productId,productName,listPrice,price) => {
+    console.log(productName);
+    this.props.callback({
+        'productId': productId,
+        'productName': productName,
+        'listPrice': listPrice,
+        'price': price
+    });
 }
 
 render() {
@@ -56,8 +66,8 @@ render() {
               <div className="shelf-wrapper">
               <Slider {...settings}>
                 { this.state.products.map(product => 
-                    <div key={product.productName}>
-                        <div className="shelf-product-wrapper">
+                    <div key={'item-' + product.index + '-' + product.productName}>
+                        <div className="shelf-product-wrapper" key={product.productName}>
                             <div className="shelf-product-img">
                                 <picture>
                                     <img src={product.imageUrl} alt={product.productName} />
@@ -75,7 +85,8 @@ render() {
                                 <small>{product.installments.map(item => {return item.quantity + ' x de ' + (parseFloat(item.value)/100).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})})}</small>
                             </div>
                             <div className="product-footer">
-                                <a className="button is-primary is-uppercase cta-buy" href="http://www.google.com/">Comprar</a>
+                                <button type="button" className="button is-primary is-uppercase cta-buy" onClick={
+                                    () => this.addToCart(product.productId,product.productName,product.listPrice,product.price)}>Comprar</button>
                             </div>
                         </div>
                     </div>
