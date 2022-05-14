@@ -49,11 +49,14 @@ render() {
                                         <img src={images[feed.bg]} alt={feed.title} />
                                     </picture>
                                 </div>
-                                <div className="slideshow-slide-inner=content">
-                                    <a href={feed.link} className="slideshow-slide-inner-content-link" title={feed.title}>
-                                        <h4>{feed.pre}</h4>
-                                        <h5>{feed.title}?</h5>
-                                    </a>
+                                <div className="slideshow-slide-inner-content">
+                                    <div className="container">
+                                        <a href={feed.link} className="slideshow-slide-inner-content-link" title={feed.title}>
+                                            <h4>{feed.pre}</h4>
+                                            <h5>{feed.title}?</h5>
+                                        </a>                                        
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
