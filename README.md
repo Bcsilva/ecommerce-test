@@ -1,70 +1,52 @@
 # React app test - ecommerce API e validações
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi criado partir do comando [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Para um desenvolvimento mais organizado, as principais seções da página foram divididas nos seguintes componentes React:
 
-In the project directory, you can run:
+## _home.js
+
+Reune as chamadas de todos os componentes separados da página. Ela usa um estado com o array de objetos `cart` para armazenar produtos adicionados pelo botão comprar, e uma função callback getCartData para ser passada pro componente de prateiras do `shelf.js`, isso será abordado logo menos.
+
+## header.js
+
+Navegação do site, responsiva. No ícone do carrinho, há um contador funcional de produtos do carrinho, que é alimentado pelo estado `cart` via getCartData da _home.js.
+
+## shelf.js
+
+Esse componente é onde a mágica das prateleiras acontece. Os produtos são chamados por uma chamada de API facilitada pela biblioteca externa `axios`. Com os materiais de api em mãos, o componente abastece em um loop array.map no render, assim criando uma coleção de produtos com todas as informações obtidas: imagem, nome, preços, etc. Ao ser invocada pelo _home.js, a shelf recebe a função callback getCartData do mesmo, que abre uma ponte de comunicação para quando clicarmos em comprar um produto da prateleira, os dados de objeto do produto são passados pra ela pela função addToCart. Logo temos uma comunicação entre esses dois componentes.
+
+## newsletter.js
+
+Componente da newsletter, onde podemos preencher com nome e email para enviar informações via POST. Para melhor validação do formulário, foi usado a biblioteca externa `react-hook-form`, que permite uma maior facilidade para construir e validar formulários. Com a validação ok, o `axios` faz o envio da requisição POST de fato, armazenando os dados pelo BODY.
+
+## footer.js
+
+Rodapé da página.
+
+# Comandos básicos para trabalhar
+
+No diretório do projeto, execute o comando:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Roda o app no modo de desenvolvimento.\
+Abra a url [http://localhost:3000](http://localhost:3000) para poder visualizar no seu navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A página sempre irá ser recarregada a cada mudança feita.\
+Erros de código poderão ser visuaizado no terminal.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Executa o runner de testes no modo interativo.\ 
+Saiba mais:  [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Cria uma build do app no diretório `build`.\
+A build agrupa todo o código da aplicação React para o modo de produção e otimiza o material para uma performance mais enxuta.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A build é minificada e os nomes de arquivos incluem hashes.\
+Logo seu app já está pronto para o deploy.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Mais informações [deployment](https://facebook.github.io/create-react-app/docs/deployment).

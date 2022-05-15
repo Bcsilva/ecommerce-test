@@ -8,7 +8,7 @@ render() {
       <footer id="footer">
           <div className="container d-flex w-100 h-100">
               <div className="row w-100">
-                  <div className="col">
+                  <div className="col-md-4">
                       <h5>Localização</h5>
                       <ul className="contact">
                           <li>Avenida Andrômeda 2000, Bloco 6 e 8</li>
@@ -17,11 +17,11 @@ render() {
                           <li>+55 11 3090 1039</li>
                       </ul>
                   </div>
-                  <div className="col">
+                  <div className="col-md-4">
                     <a href="http://www.google.com/" role="button" className="btn button btn-contact"><i></i>Entre em contato</a>
                     <a href="http://www.google.com/" role="button" className="btn button btn-call"><i></i>Fale com o nosso consultor online</a>
                   </div>
-                  <div className="col">
+                  <div className="col-md-4">
                     <ul className="copyright">
                         <li><a href="http://www.google.com/"  rel="noopener noreferrer" target="_blank" role="button"><span>Created by </span><img src={logo} alt="Corebiz" /></a></li>
                         <li><a href="http://www.google.com/"  rel="noopener noreferrer" target="_blank" role="button"><span>Powered by </span><img src={logoVtex} alt="Vtex" /></a></li>
